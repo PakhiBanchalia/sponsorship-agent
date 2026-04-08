@@ -15,7 +15,7 @@ Single-user TinyFish accelerator MVP for scouting YouTube fitness creators, runn
 1. Copy `.env.example` to `.env`.
 2. Fill in `TINYFISH_API_KEY`.
 3. Fill in `BRAND_SAFETY_LLM_API_KEY`.
-4. Optional: set `BRAND_SAFETY_LLM_PROVIDER` to `gemini` or `anthropic`. Default is `gemini`.
+4. set `BRAND_SAFETY_LLM_PROVIDER` to `gemini` or `anthropic`. Default is `gemini`.
 5. Fill in Gmail SMTP credentials if you want real email sends.
 5. Install dependencies:
 
