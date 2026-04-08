@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% set active_nav = 'history' %}
+
+{% block title %}Campaign History | Alignd{% endblock %}
+
+{% block content %}
+<div class="mb-12 flex items-end justify-between gap-6">
+  <div>
+    <h2 class="text-4xl font-extrabold font-manrope tracking-tighter text-primary">Campaign History</h2>
+    <p class="mt-2 text-sm text-secondary">Completed campaigns live here so you can keep the active workspace clean.</p>
+  </div>
+  <a href="/campaigns"
+    class="flex items-center gap-2 rounded-xl bg-surface-container-highest px-6 py-2.5 text-sm font-semibold text-on-surface transition-all hover:bg-surface-variant font-manrope">
+    <span class="material-symbols-outlined text-sm">west</span>
+    Back to Campaigns
+  </a>
+</div>
+
+<div class="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+  <div class="rounded-2xl bg-primary p-8 text-on-primary">
+    <p class="text-sm font-medium uppercase tracking-widest opacity-80">Completed Campaigns</p>
+    <h3 class="mt-3 text-5xl font-extrabold font-manrope tracking-tighter">{{ campaigns|length }}</h3>
+    <p class="mt-6 text-sm text-primary-fixed">Archived campaigns that were manually marked complete.</p>
+  </div>
+  <div class="rounded-2xl border border-outline-variant/10 bg-surface-container-lowest p-8 shadow-sm">
+    <p class="text-sm font-medium uppercase tracking-widest text-secondary">Archive Purpose</p>
+    <p class="mt-3 max-w-xl text-sm leading-7 text-on-surface-variant">
+      Use this page as a clean record of campaigns you want to keep for reference without mixing them into active operations.
+    </p>
+  </div>
+</div>
+
+<div class="overflow-hidden rounded-2xl border border-outline-variant/15 bg-white">
+  <div class="overflow-x-auto">
+    <table class="min-w-[900px] w-full table-fixed border-collapse">
+      <thead class="bg-surface-container-low">
+        <tr class="text-center text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">
+          <th class="px-5 py-4">Campaign</th>
+          <th class="px-5 py-4">Budget</th>
+          <th class="px-5 py-4">Audience</th>
+          <th class="px-5 py-4">Vertical</th>
+          <th class="px-5 py-4">Last Updated</th>
+          <th class="px-5 py-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for campaign in campaigns %}
+        <tr class="border-t border-outline-variant/10 text-center">
+          <td class="px-5 py-5">
+            <div class="flex flex-col items-center gap-1">
+              <p class="text-sm font-bold text-on-surface">{{ campaign.brand_name }}</p>
+              <p class="text-xs text-outline">{{ campaign.geo }}</p>
+            </div>
+          </td>
+          <td class="px-5 py-5 text-sm font-semibold text-on-surface">${{ "{:,}".format(campaign.budget_min) }} – ${{ "{:,}".format(campaign.budget_max) }}</td>
+          <td class="px-5 py-5 text-sm text-on-surface-variant">{{ campaign.audience }}</td>
+          <td class="px-5 py-5 text-sm text-on-surface-variant">{{ campaign.vertical }}</td>
+          <td class="px-5 py-5 text-sm text-on-surface-variant">{{ campaign.updated_at.strftime('%Y-%m-%d %H:%M') if campaign.updated_at else '—' }}</td>
+          <td class="px-5 py-5">
+            <div class="flex flex-wrap items-center justify-center gap-2">
+              <button type="button"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-outline-variant/30 bg-white px-3 py-2 text-[11px] font-medium text-secondary transition-all hover:border-emerald-200 hover:text-emerald-900"
+                onclick="restoreCampaign({{ campaign.id }})">
+                <span class="material-symbols-outlined text-sm">restore</span>
+                Restore
+              </button>
+              <a href="/campaigns/{{ campaign.id }}"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-outline-variant/30 bg-white px-3 py-2 text-[11px] font-medium text-secondary transition-all hover:border-emerald-200 hover:text-emerald-900">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                View
+              </a>
+              <button type="button"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-error/20 bg-white px-3 py-2 text-[11px] font-medium text-error transition-all hover:bg-error-container/60"
+                onclick="deleteCampaign({{ campaign.id }})">
+                <span class="material-symbols-outlined text-sm">delete</span>
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="6" class="px-6 py-16 text-center">
+            <div class="flex flex-col items-center gap-4">
+              <span class="material-symbols-outlined text-4xl text-outline-variant">history</span>
+              <p class="text-secondary font-medium">No completed campaigns yet.</p>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  async function restoreCampaign(campaignId) {
+    const response = await fetch(`/api/campaigns/${campaignId}/restore`, { method: "POST" });
+    const data = await response.json();
+    if (!response.ok) {
+      window.alert(data.detail || "Could not restore campaign");
+      return;
+    }
+    window.location = `/campaigns/${campaignId}`;
+  }
+
+  async function deleteCampaign(campaignId) {
+    if (!window.confirm("Delete this archived campaign permanently?")) {
+      return;
+    }
+    const response = await fetch(`/api/campaigns/${campaignId}/delete`, { method: "POST" });
+    const data = await response.json();
+    if (!response.ok) {
+      window.alert(data.detail || "Could not delete campaign");
+      return;
+    }
+    window.location.reload();
+  }
+</script>
+{% endblock %}

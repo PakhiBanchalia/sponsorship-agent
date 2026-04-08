@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% set active_nav = 'dashboard' %}
+
+{% block title %}{{ campaign.brand_name }} Campaign | Alignd {% endblock %}
+
+{% block head %}
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Dashboard Header Section -->
+<header class="mb-12">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <div>
+      <nav class="flex items-center gap-2 text-secondary text-sm mb-2">
+        <a href="/campaigns" class="hover:text-primary transition-colors">Campaigns</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-on-surface">{{ campaign.brand_name }}</span>
+      </nav>
+      <h1 class="text-4xl font-extrabold tracking-tighter text-emerald-950 font-manrope">{{ campaign.brand_name }}</h1>
+    </div>
+    <div class="flex gap-3">
+      {% if campaign.status != 'completed' %}
+      <button
+        class="px-6 py-2.5 bg-white text-on-surface font-semibold rounded-xl text-sm border border-outline-variant/30 transition-all hover:bg-surface-container-low font-manrope"
+        onclick="completeCampaign({{ campaign.id }})">
+        Mark Completed
+      </button>
+      {% endif %}
+      <button
+        class="px-6 py-2.5 bg-white text-error font-semibold rounded-xl text-sm border border-error/20 transition-all hover:bg-error-container/60 font-manrope"
+        onclick="deleteCampaign({{ campaign.id }})">
+        Delete
+      </button>
+      <a href="/campaigns"
+        class="px-6 py-2.5 bg-surface-container-highest text-on-surface font-semibold rounded-xl text-sm transition-all hover:bg-surface-variant font-manrope">
+        All Campaigns
+      </a>
+      <button
+        class="px-6 py-2.5 bg-primary text-on-primary font-bold rounded-xl text-sm shadow-lg shadow-emerald-900/10 hover:scale-[0.98] transition-transform font-manrope"
+        onclick="retryCampaign({{ campaign.id }})">
+        Retry Failed
+      </button>
+    </div>
+  </div>
+
+  <!-- Bento Metrics Grid -->
+  <div id="summary-card" hx-get="/api/campaigns/{{ campaign.id }}" hx-trigger="load, refresh from:body, every 5s"
+    hx-swap="innerHTML" class="mt-10">
+    {% include "partials/summary_card.html" %}
+  </div>
+</header>
+
+<div class="grid gap-8 xl:grid-cols-[minmax(0,1fr)_22rem] items-start">
+  <!-- Main Creator Shortlist Table Section -->
+  <section class="min-w-0 w-full rounded-2xl border border-outline-variant/15 bg-surface-container-lowest p-8 shadow-sm">
+    <div class="flex items-center justify-between mb-8">
+      <h3 class="text-2xl font-bold text-emerald-950 tracking-tight font-manrope">Creator Shortlist</h3>
+    </div>
+    <div id="creator-table" hx-get="/api/campaigns/{{ campaign.id }}/creators"
+      hx-trigger="load, refresh from:body, every 5s" hx-swap="innerHTML">
+      {% include "partials/creator_table.html" %}
+    </div>
+  </section>
+
+  <!-- Side Panel: Draft Preview & Timeline -->
+  <aside class="min-w-0 w-full xl:sticky xl:top-8 flex flex-col gap-6">
+    <!-- Outreach Draft Panel -->
+    <div class="rounded-2xl border border-outline-variant/15 bg-surface-container-low p-8 shadow-sm">
+      <h3 class="text-xl font-bold text-emerald-950 tracking-tight font-manrope">Outreach Draft</h3>
+      <div class="mt-5 space-y-4">
+        <div class="rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-4 shadow-sm">
+          <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-1">Subject Line</p>
+          <p id="draft-subject" class="break-words text-sm font-semibold leading-6 text-emerald-950">Select "Preview Draft" on a creator to
+            see the email preview.</p>
+        </div>
+        <div class="relative overflow-hidden rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-6 shadow-sm">
+          <p id="draft-body" class="max-h-[24rem] overflow-y-auto whitespace-pre-wrap break-words pr-1 text-sm leading-relaxed text-on-surface-variant">Click "Preview
+            Draft" on any creator in the shortlist to preview their personalized outreach email here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automation Timeline -->
+    <div class="rounded-2xl border border-outline-variant/15 bg-surface-container-lowest p-8 shadow-sm">
+      <h3 class="text-xl font-bold text-emerald-950 tracking-tight font-manrope">Automation Timeline</h3>
+      <div id="run-timeline" class="mt-5" hx-get="/api/campaigns/{{ campaign.id }}/runs"
+        hx-trigger="load, refresh from:body, every 5s" hx-swap="innerHTML">
+        {% include "partials/run_timeline.html" %}
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div id="brand-safety-overlay" class="fixed inset-0 z-50 hidden bg-slate-950/40 p-4 md:p-8">
+  <div class="flex min-h-full items-center justify-center">
+    <div class="w-full max-w-xl rounded-2xl border border-outline-variant/20 bg-white p-6 shadow-2xl">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-secondary">Brand Safety</p>
+          <h3 id="brand-safety-title" class="mt-2 text-2xl font-extrabold tracking-tight text-emerald-950 font-manrope"></h3>
+        </div>
+        <button type="button" onclick="closeBrandSafetyCard()" class="rounded-full bg-surface-container px-3 py-2 text-secondary hover:bg-surface-container-highest">
+          <span class="material-symbols-outlined text-sm">close</span>
+        </button>
+      </div>
+      <div id="brand-safety-flags" class="mt-5 space-y-3"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function openBrandSafetyCard(creatorName, flags) {
+    const overlay = document.getElementById("brand-safety-overlay");
+    const title = document.getElementById("brand-safety-title");
+    const container = document.getElementById("brand-safety-flags");
+    title.textContent = creatorName;
+    container.innerHTML = "";
+
+    if (!flags || flags.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "rounded-xl bg-surface-container-low px-4 py-3 text-sm text-secondary";
+      empty.textContent = "No specific brand-safety flags were returned for this creator.";
+      container.appendChild(empty);
+    } else {
+      flags.forEach((flag) => {
+        const card = document.createElement("div");
+        card.className = "rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-red-800";
+        card.textContent = flag;
+        container.appendChild(card);
+      });
+    }
+
+    overlay.classList.remove("hidden");
+  }
+
+  function closeBrandSafetyCard() {
+    document.getElementById("brand-safety-overlay").classList.add("hidden");
+  }
+
+  async function previewDraft(creatorId) {
+    try {
+      const response = await fetch(`/api/creators/${creatorId}/draft`);
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || "Draft preview failed");
+      }
+      document.getElementById("draft-subject").textContent = `Subject: ${data.subject}`;
+      document.getElementById("draft-body").textContent = data.body;
+    } catch (error) {
+      document.getElementById("draft-subject").textContent = "Error";
+      document.getElementById("draft-body").textContent = `Draft preview failed: ${error.message}`;
+    }
+  }
+
+  async function runOutreach(creatorId, flagged, redFlags) {
+    if (flagged) {
+      const message = `This creator has brand safety flags.\n\n${redFlags.join("\n")}\n\nProceed anyway?`;
+      if (!window.confirm(message)) {
+        return;
+      }
+    }
+    try {
+      const response = await fetch(`/api/creators/${creatorId}/outreach`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "auto", send_email: true })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.detail || "Outreach failed");
+      }
+      if (data.message_preview) {
+        document.getElementById("draft-body").textContent = data.message_preview;
+      }
+      if (data.status === "failed" || data.status === "skipped") {
+        window.alert(data.message_preview || `Outreach status: ${data.status}`);
+      }
+      htmx.trigger(document.body, "refresh");
+    } catch (error) {
+      window.alert(`Outreach failed: ${error.message}`);
+    }
+  }
+
+  async function retryCampaign(campaignId) {
+    const response = await fetch(`/api/campaigns/${campaignId}/retry`, { method: "POST" });
+    if (!response.ok) {
+      const data = await response.json();
+      window.alert(data.detail || "Retry failed");
+      return;
+    }
+    htmx.trigger(document.body, "refresh");
+  }
+
+  async function completeCampaign(campaignId) {
+    if (!window.confirm("Mark this campaign as completed and move it to History?")) {
+      return;
+    }
+    const response = await fetch(`/api/campaigns/${campaignId}/complete`, { method: "POST" });
+    const data = await response.json();
+    if (!response.ok) {
+      window.alert(data.detail || "Could not complete campaign");
+      return;
+    }
+    window.location = "/history";
+  }
+
+  async function deleteCampaign(campaignId) {
+    if (!window.confirm("Delete this campaign permanently? This cannot be undone.")) {
+      return;
+    }
+    const response = await fetch(`/api/campaigns/${campaignId}/delete`, { method: "POST" });
+    const data = await response.json();
+    if (!response.ok) {
+      window.alert(data.detail || "Could not delete campaign");
+      return;
+    }
+    window.location = "/campaigns";
+  }
+
+  document.getElementById("brand-safety-overlay").addEventListener("click", (event) => {
+    if (event.target.id === "brand-safety-overlay") {
+      closeBrandSafetyCard();
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,47 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- Campaign Status -->
+  <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+    <span class="text-secondary text-xs font-bold uppercase tracking-wider font-label">Campaign Status</span>
+    <div class="mt-4 flex items-center gap-3">
+      {% if summary.status in ['discovering', 'enriching', 'brand_safety_check', 'scoring', 'contact_discovery', 'outreach_in_progress'] %}
+      <div class="w-3 h-3 rounded-full bg-emerald-500 status-live"></div>
+      <span class="text-2xl font-extrabold font-headline capitalize">{{ summary.status|replace('_', ' ') }}</span>
+      {% elif summary.status == 'partial_failure' or summary.status == 'failed' %}
+      <div class="w-3 h-3 rounded-full bg-error animate-pulse"></div>
+      <span class="text-2xl font-extrabold font-headline capitalize">{{ summary.status|replace('_', ' ') }}</span>
+      {% else %}
+      <div class="w-3 h-3 rounded-full bg-secondary"></div>
+      <span class="text-2xl font-extrabold font-headline capitalize">{{ summary.status|replace('_', ' ') }}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Allocated Budget -->
+  <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+    <span class="text-secondary text-xs font-bold uppercase tracking-wider font-label">Allocated Budget</span>
+    <div class="mt-4">
+      <span class="text-2xl font-extrabold font-headline">${{ "{:,}".format(summary.budget_min) }} – ${{ "{:,}".format(summary.budget_max) }}</span>
+    </div>
+    <div class="w-full bg-surface-container-low h-1 rounded-full mt-4">
+      <div class="bg-emerald-600 h-1 rounded-full w-[45%]"></div>
+    </div>
+  </div>
+
+  <!-- Total Creators -->
+  <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+    <span class="text-secondary text-xs font-bold uppercase tracking-wider font-label">Total Creators</span>
+    <div class="mt-4 flex items-baseline gap-2">
+      <span class="text-4xl font-extrabold font-headline">{{ summary.creator_count }}</span>
+    </div>
+    <p class="text-xs text-secondary mt-2">{{ summary.geo }} · {{ summary.vertical }}</p>
+  </div>
+
+  <!-- Shortlisted -->
+  <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+    <span class="text-secondary text-xs font-bold uppercase tracking-wider font-label">Shortlisted</span>
+    <div class="mt-4">
+      <span class="text-4xl font-extrabold font-headline">{{ summary.shortlisted_count }}</span>
+    </div>
+    <p class="text-xs text-secondary mt-2">Ready for outreach</p>
+  </div>
+</div>

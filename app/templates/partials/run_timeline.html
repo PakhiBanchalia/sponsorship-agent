@@ -1,0 +1,58 @@
+<div class="space-y-3 max-h-[32rem] overflow-auto">
+  {% for run in runs %}
+  <article class="rounded-xl border border-outline-variant/15 bg-surface-container-low p-4 hover:bg-surface-container transition-colors">
+    <div class="flex items-start justify-between gap-3">
+      <div class="flex items-start gap-3">
+        <!-- Status Indicator -->
+        {% if run.status in ['PENDING', 'RUNNING'] %}
+        <div class="mt-1 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></div>
+        {% elif run.goal_succeeded %}
+        <div class="mt-1 w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0"></div>
+        {% elif run.goal_succeeded == false %}
+        <div class="mt-1 w-2.5 h-2.5 rounded-full bg-error flex-shrink-0"></div>
+        {% else %}
+        <div class="mt-1 w-2.5 h-2.5 rounded-full bg-slate-300 flex-shrink-0"></div>
+        {% endif %}
+        <div>
+          <div class="text-sm font-semibold text-emerald-950 font-manrope">{{ run.phase }}</div>
+          <div class="text-[11px] text-secondary mt-0.5">
+            Attempt {{ run.attempt_number }}
+            {% if run.goal_succeeded is not none %}
+            · <span class="{% if run.goal_succeeded %}text-emerald-600{% else %}text-error{% endif %} font-bold">{{ "Success" if run.goal_succeeded else "Failed" }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if run.streaming_url and run.status == 'RUNNING' %}
+      <a href="{{ run.streaming_url }}" target="_blank" class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 hover:text-emerald-900 transition-colors px-2 py-1 bg-emerald-50 rounded-lg">
+        <span class="material-symbols-outlined text-sm">live_tv</span>
+        Live
+      </a>
+      {% elif run.status in ['PENDING', 'RUNNING'] %}
+      <span class="px-2 py-1 rounded-lg bg-emerald-50 text-[10px] font-bold text-emerald-700 uppercase tracking-wider">{{ run.status }}</span>
+      {% elif run.status == 'COMPLETED' or run.status == 'DONE' %}
+      <span class="px-2 py-1 rounded-lg bg-surface-container-highest text-[10px] font-bold text-secondary uppercase tracking-wider">Done</span>
+      {% endif %}
+    </div>
+    <div class="mt-2 text-[11px] text-outline break-all line-clamp-1">{{ run.target_url }}</div>
+    {% if run.error_json %}
+    <div class="mt-3 rounded-lg bg-error-container/50 p-3 text-[11px] text-on-error-container">{{ run.error_json }}</div>
+    {% endif %}
+    {% if run.events %}
+    <ul class="mt-3 space-y-1 border-t border-outline-variant/10 pt-3">
+      {% for event in run.events[-3:] %}
+      <li class="text-[11px] text-secondary flex items-start gap-2">
+        <span class="material-symbols-outlined text-[14px] text-outline mt-0.5 flex-shrink-0">schedule</span>
+        <span>{{ event.message }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </article>
+  {% else %}
+  <div class="py-8 text-center">
+    <span class="material-symbols-outlined text-3xl text-outline-variant mb-2">timeline</span>
+    <p class="text-sm text-secondary font-medium">No automation runs yet.</p>
+  </div>
+  {% endfor %}
+</div>

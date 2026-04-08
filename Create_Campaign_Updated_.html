@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Launch New Campaign | Evergreen Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#40454a",
+              "outline-variant": "#bfc9c3",
+              "error": "#ba1a1a",
+              "secondary-fixed": "#dce2f3",
+              "on-error-container": "#93000a",
+              "surface-tint": "#2b6954",
+              "on-primary-fixed": "#002117",
+              "inverse-on-surface": "#f0f1f2",
+              "secondary-container": "#dce2f3",
+              "on-secondary-fixed": "#151c27",
+              "background": "#f8f9fa",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#c3c7cd",
+              "surface-container-high": "#e7e8e9",
+              "on-tertiary-container": "#aeb2b8",
+              "secondary-fixed-dim": "#c0c7d6",
+              "on-surface-variant": "#404944",
+              "tertiary": "#2a2f33",
+              "surface": "#f8f9fa",
+              "on-primary": "#ffffff",
+              "inverse-primary": "#95d3ba",
+              "on-secondary-fixed-variant": "#404754",
+              "primary-container": "#064e3b",
+              "on-tertiary-fixed": "#171c20",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#95d3ba",
+              "on-tertiary-fixed-variant": "#43474c",
+              "outline": "#707974",
+              "on-secondary-container": "#5e6572",
+              "surface-container": "#edeeef",
+              "secondary": "#585f6c",
+              "surface-variant": "#e1e3e4",
+              "on-surface": "#191c1d",
+              "tertiary-fixed": "#dfe3e9",
+              "primary": "#003527",
+              "surface-dim": "#d9dadb",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-container": "#80bea6",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#0b513d",
+              "surface-container-low": "#f3f4f5",
+              "inverse-surface": "#2e3132",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "on-background": "#191c1d",
+              "primary-fixed": "#b0f0d6"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<div class="flex">
+<!-- SideNavBar -->
+<aside class="h-screen w-72 fixed left-0 top-0 border-r border-slate-100 bg-slate-50 flex flex-col p-6 gap-y-1">
+<div class="mb-6 flex flex-col gap-1">
+<span class="font-manrope font-bold text-xl tracking-tighter text-emerald-900">Evergreen Studio</span>
+<span class="text-xs text-slate-500 font-medium tracking-tight">Premium Management</span>
+</div>
+<button class="mb-6 bg-primary text-on-primary rounded-xl px-4 py-3 font-manrope font-bold text-sm flex items-center justify-center gap-2 shadow-sm hover:opacity-90 transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Campaign
+            </button>
+<nav class="flex flex-col gap-y-1 font-manrope text-sm font-medium tracking-tight">
+<a class="bg-white text-emerald-900 rounded-lg shadow-sm shadow-emerald-900/5 font-semibold px-4 py-2.5 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="rocket_launch">rocket_launch</span>
+                    Campaigns
+                </a>
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+                    Creators
+                </a>
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="insights">insights</span>
+                    Analytics
+                </a>
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group_add">group_add</span>
+                    Shortlists
+                </a>
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_stories">auto_stories</span>
+                    Content Drafts
+                </a>
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+                    Payments
+                </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50 flex flex-col gap-y-1">
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3 text-sm font-medium font-manrope tracking-tight" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+                    Help Center
+                </a>
+<a class="text-slate-500 px-4 py-2.5 hover:bg-slate-100 transition-all duration-200 rounded-lg flex items-center gap-3 text-sm font-medium font-manrope tracking-tight" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-72 min-h-screen p-8 md:p-12 lg:p-20 flex flex-col items-center">
+<div class="max-w-3xl w-full">
+<!-- Header -->
+<header class="mb-12">
+<h1 class="font-manrope text-4xl font-extrabold tracking-tighter text-primary mb-3">Start a New Campaign</h1>
+<p class="text-secondary font-body leading-relaxed max-w-xl">
+                        Define your brand vision and creator requirements. We’ll curate a shortlist of creators who align with your aesthetic and performance goals.
+                    </p>
+</header>
+<!-- Form Section -->
+<div class="space-y-10">
+<!-- Basic Info Group -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Brand Name</label>
+<input class="bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-primary/10 focus:bg-surface-container-highest transition-all text-on-surface placeholder:text-slate-400" placeholder="e.g. Lumina Wellness" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Vertical</label>
+<select class="bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-primary/10 focus:bg-surface-container-highest transition-all text-on-surface appearance-none">
+<option>Fitness &amp; Wellness</option>
+<option>High Fashion</option>
+<option>Organic Beauty</option>
+<option>Sustainable Living</option>
+</select>
+</div>
+</section>
+<!-- Target & Budget Group -->
+<section class="bg-surface-container-low rounded-xl p-8 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Target Geography</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm" data-icon="public">public</span>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-4 pl-12 focus:ring-2 focus:ring-primary/10 transition-all text-on-surface" placeholder="e.g. United States" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Audience Segment</label>
+<input class="bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-primary/10 transition-all text-on-surface" placeholder="e.g. Women 18-34, Interest: Yoga" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Budget Range (USD)</label>
+<div class="flex items-center gap-4">
+<div class="flex-1 relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">$</span>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-4 pl-8 focus:ring-2 focus:ring-primary/10 transition-all text-on-surface" placeholder="Min" type="number"/>
+</div>
+<span class="text-slate-400">—</span>
+<div class="flex-1 relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">$</span>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-4 pl-8 focus:ring-2 focus:ring-primary/10 transition-all text-on-surface" placeholder="Max" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Campaign Brief -->
+<section class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Campaign Brief &amp; Creative Direction</label>
+<textarea class="bg-surface-container-low border-none rounded-xl p-6 focus:ring-2 focus:ring-primary/10 focus:bg-surface-container-highest transition-all text-on-surface placeholder:text-slate-400 leading-relaxed" placeholder="Describe the campaign goals, visual style, and key messaging..." rows="6"></textarea>
+</section>
+<!-- Action Bar -->
+<footer class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male creative director in a minimalist loft" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG2pzIfa9cB14qb7bqhfhmpy4uSKD0OVSM94yQ23XK7hKq7jHu2ITIJjnVwM7spTBsLVXlRdJ0hKeV7ZCg3-Yknn7Kf1oHAvL5Er3m5koUcX3Z84ZzkNL6JRJClCdgWkIsg4ILIUrYI2_veLt-ViNqx6SOXfmLkwabkXkntn00ZF6W2fKLdxQVulAbJ4ABP75EkANHmpQNhEcd2ASka9twslj48JTLVt9JT51nKMuLw3EaKcMQPux4Yng5XB2HUoxu5X0-zIzl6Do"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female content creator smiling warmly in soft sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwb41mFHi3y2_qGKU0gk9a83Gx1POeSaY5Ayp9jCycUZ-DHP8K328bQkDxN5eAc-Bf_7n-ROjfhu8N3zYUA8UGQ_Irrne_zVXTElK4M3Lr3KUB5zw3H4LaH5e4WZ86vTAVKUfVASA_iPHOcM3wJV9E_UQJ5YHXMBrocmFU7cUqEUc3Jt6SD0EM96N5Z9Cz51KfKigJQxRgVIaLMGdF94pzLPbJEIJsJrtSL6Tky3uCaD8tQkmyPKR0-7zfiZuYBJD2aH-1hZNcsKs"/>
+</div>
+</div>
+<p class="text-xs text-secondary font-medium italic">42 creators currently match these criteria</p>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none text-secondary font-manrope font-bold text-sm px-6 py-4 hover:underline transition-all underline-offset-4">
+                                Save Draft
+                            </button>
+<button class="flex-1 md:flex-none bg-primary text-on-primary rounded-xl px-10 py-4 font-manrope font-extrabold text-sm tracking-wide shadow-xl shadow-primary/10 hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                                Launch Campaign
+                            </button>
+</div>
+</footer>
+</div>
+<!-- Footer Visual Decoration -->
+<div class="mt-24 opacity-20 flex justify-center grayscale">
+<img class="w-full h-32 object-cover rounded-3xl" data-alt="Sunlight filtering through a dense pine forest canopy with soft light rays and green mossy ground" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo8g-PAbz4ky8Fkggbix5gdyUgRjnkonX1YthARnQQYi_X1LehFtgKD1o9rpzrps68fODU1hzcoAX0L77deVxM7kv6sQOrEHkf5jHLxkrqBsFgPreiH7cTgIq_6JsWESamkiwfx2NtKnrq5BZPY2os_f_tsKgCoa9YZUrUdpHxoAtKgeVSk_j_tnZdpk3UxPv1MbCfb3VYjUhUCg5xyOZqS4o424KKXPRy127DMv1fRCd4Yp-pq5VeqUiar36MFfJklsQNRerytno"/>
+</div>
+</div>
+</main>
+</div>
+</body></html>

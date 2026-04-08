@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>{% block title %}Alignd{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#003527",
+            "on-primary": "#ffffff",
+            "primary-container": "#064e3b",
+            "on-primary-container": "#80bea6",
+            "primary-fixed": "#b0f0d6",
+            "primary-fixed-dim": "#95d3ba",
+            "secondary": "#585f6c",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#dce2f3",
+            "on-secondary-container": "#5e6572",
+            "tertiary": "#2a2f33",
+            "surface": "#f8f9fa",
+            "on-surface": "#191c1d",
+            "surface-variant": "#e1e3e4",
+            "on-surface-variant": "#404944",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f3f4f5",
+            "surface-container": "#edeeef",
+            "surface-container-high": "#e7e8e9",
+            "surface-container-highest": "#e1e3e4",
+            "surface-tint": "#2b6954",
+            "surface-dim": "#d9dadb",
+            "surface-bright": "#f8f9fa",
+            "background": "#f8f9fa",
+            "on-background": "#191c1d",
+            "outline": "#707974",
+            "outline-variant": "#bfc9c3",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#2e3132",
+            "inverse-on-surface": "#f0f1f2",
+            "inverse-primary": "#95d3ba",
+          },
+          fontFamily: {
+            "headline": ["Manrope", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-manrope,
+    .font-headline {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+
+    /* Smooth scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #bfc9c3;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #707974;
+    }
+
+    /* Sidebar active animation */
+    .nav-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      border-radius: inherit;
+    }
+
+    .nav-item:hover::before {
+      opacity: 0.04;
+    }
+
+    .status-live {
+      animation: pulseStatus 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseStatus {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.45;
+      }
+    }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+
+<body class="bg-background text-on-background antialiased min-h-screen">
+  <div class="flex">
+    <!-- Sidebar Navigation -->
+    <aside
+      class="hidden lg:flex h-screen w-60 fixed left-0 top-0 flex-col p-5 gap-y-1 bg-slate-50 border-r border-slate-100 z-40">
+      <div class="mb-8 px-4">
+        <div class="flex items-center gap-3 mb-1">
+          <span class="font-manrope font-bold text-xl tracking-tighter text-emerald-900">Alignd</span>
+        </div>
+        <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Powered by TinyFish</p>
+      </div>
+
+      <nav class="flex flex-col gap-1 font-manrope text-sm font-medium tracking-tight">
+        <a class="nav-item flex items-center gap-3 {% if active_nav == 'campaigns' %}bg-white text-emerald-900 rounded-lg shadow-sm shadow-emerald-900/5 font-semibold{% else %}text-slate-500 hover:bg-slate-100 rounded-lg{% endif %} px-4 py-2.5 transition-all duration-200"
+          href="/campaigns">
+          <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+          <span>Campaigns</span>
+        </a>
+        <a class="nav-item flex items-center gap-3 {% if active_nav == 'history' %}bg-white text-emerald-900 rounded-lg shadow-sm shadow-emerald-900/5 font-semibold{% else %}text-slate-500 hover:bg-slate-100 rounded-lg{% endif %} px-4 py-2.5 transition-all duration-200"
+          href="/history">
+          <span class="material-symbols-outlined text-[20px]">history</span>
+          <span>History</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="lg:pl-60 min-h-screen w-full">
+      <div class="max-w-[1400px] mx-auto p-8 md:p-12">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+  </div>
+
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

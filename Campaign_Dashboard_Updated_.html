@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "outline-variant": "#bfc9c3",
+              "on-primary": "#ffffff",
+              "surface-variant": "#e1e3e4",
+              "surface-container-low": "#f3f4f5",
+              "on-primary-fixed": "#002117",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "error-container": "#ffdad6",
+              "surface-bright": "#f8f9fa",
+              "inverse-on-surface": "#f0f1f2",
+              "tertiary-fixed-dim": "#c3c7cd",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#aeb2b8",
+              "surface-container-lowest": "#ffffff",
+              "secondary": "#585f6c",
+              "tertiary": "#2a2f33",
+              "secondary-fixed-dim": "#c0c7d6",
+              "on-primary-fixed-variant": "#0b513d",
+              "error": "#ba1a1a",
+              "on-primary-container": "#80bea6",
+              "background": "#f8f9fa",
+              "on-tertiary-fixed-variant": "#43474c",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e1e3e4",
+              "primary": "#003527",
+              "tertiary-container": "#40454a",
+              "on-secondary-fixed-variant": "#404754",
+              "on-tertiary-fixed": "#171c20",
+              "on-surface": "#191c1d",
+              "on-secondary-fixed": "#151c27",
+              "on-background": "#191c1d",
+              "primary-container": "#064e3b",
+              "surface-container-high": "#e7e8e9",
+              "secondary-container": "#dce2f3",
+              "inverse-primary": "#95d3ba",
+              "primary-fixed-dim": "#95d3ba",
+              "surface-dim": "#d9dadb",
+              "primary-fixed": "#b0f0d6",
+              "surface-container": "#edeeef",
+              "surface": "#f8f9fa",
+              "on-surface-variant": "#404944",
+              "tertiary-fixed": "#dfe3e9",
+              "outline": "#707974",
+              "secondary-fixed": "#dce2f3",
+              "surface-tint": "#2b6954",
+              "on-secondary-container": "#5e6572"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; }
+      h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- SideNavBar (Updated as per components_9) -->
+<aside class="hidden lg:flex h-screen w-72 fixed left-0 top-0 flex-col p-6 gap-y-1 bg-slate-50 border-r border-slate-100 z-40 dark:bg-emerald-950 dark:border-emerald-900/30">
+<div class="mb-8 px-4">
+<div class="flex items-center gap-3 mb-1">
+<span class="font-manrope font-bold text-xl tracking-tighter text-emerald-900 dark:text-emerald-50">Evergreen Studio</span>
+</div>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest dark:text-emerald-200/50">Premium Management</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+<span>Campaigns</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span>Creators</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 bg-white dark:bg-emerald-900 text-emerald-900 dark:text-emerald-50 rounded-lg shadow-sm shadow-emerald-900/5 font-semibold px-4 py-2.5 transition-all duration-200 font-manrope text-sm tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span>
+<span>Shortlists</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span>Content Drafts</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Payments</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 flex flex-col gap-1">
+<button class="bg-primary text-on-primary rounded-xl px-4 py-3 text-sm font-bold tracking-tight hover:scale-[0.98] transition-transform mx-4 mb-4 active:scale-95 duration-150">
+                New Campaign
+            </button>
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-emerald-200/50 px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-emerald-900/40 transition-all duration-200 rounded-lg font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas (Adjusted padding for no top bar and wider side bar) -->
+<main class="lg:pl-72 min-h-screen">
+<div class="max-w-[1400px] mx-auto p-8 md:p-12">
+<!-- Dashboard Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<nav class="flex items-center gap-2 text-secondary text-sm mb-2">
+<span>Campaigns</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface">Yogi Wellness</span>
+</nav>
+<h1 class="text-4xl font-extrabold tracking-tighter text-emerald-950">Yogi Wellness Brand Launch</h1>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 bg-surface-container-highest text-on-surface font-semibold rounded-xl text-sm transition-all hover:bg-surface-variant">
+                            Export Report
+                        </button>
+<button class="px-6 py-2.5 bg-primary text-on-primary font-bold rounded-xl text-sm shadow-lg shadow-emerald-900/10 hover:scale-[0.98] transition-transform">
+                            Manage Reachout
+                        </button>
+</div>
+</div>
+<!-- Bento Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between aspect-video md:aspect-auto">
+<span class="text-secondary text-xs font-bold uppercase tracking-wider">Campaign Status</span>
+<div class="mt-4 flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-error animate-pulse"></div>
+<span class="text-2xl font-extrabold font-headline">Partial Failure</span>
+</div>
+<p class="text-xs text-secondary mt-2">3 automation triggers failed</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+<span class="text-secondary text-xs font-bold uppercase tracking-wider">Allocated Budget</span>
+<div class="mt-4">
+<span class="text-2xl font-extrabold font-headline">$3k – $10k</span>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-4">
+<div class="bg-emerald-600 h-1 rounded-full w-[45%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+<span class="text-secondary text-xs font-bold uppercase tracking-wider">Total Creators</span>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-4xl font-extrabold font-headline">10</span>
+<span class="text-emerald-600 font-bold text-sm">+2 this week</span>
+</div>
+<p class="text-xs text-secondary mt-2">Active outreach in progress</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+<span class="text-secondary text-xs font-bold uppercase tracking-wider">Shortlisted</span>
+<div class="mt-4">
+<span class="text-4xl font-extrabold font-headline">6</span>
+</div>
+<div class="flex -space-x-2 mt-4">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img alt="avatar" data-alt="close up headshot of a smiling lifestyle creator with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcQ13Se0gcGgHuY22f-I_GqXwOlOftettg3aw0Q5w9F_knHHJMniBH3VjHE9SW8Din6pU3M16bRL-vFwi4tJxzpfZFxgN75G33tCyEE3HFE3xUsMLklCGnUveZeXJLVR6WJoj5T1jP-rV6cIs-0ncn1lG6PR8NkpC5MPROD60sU2tkD9oeiHKvHMqa10nMzNLq1Iwi1JRY5oR2iV6WgWayoMZBtYpK1jVb13nk9jdh3wrVF5xWrLUwFo8PAHFF5FgTtBQmkppPeVQ"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img alt="avatar" data-alt="headshot of a stylish male creator against an urban background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCawSdrxI6jxlM3xxbvudx5Xid0dRQKlagoNe7mP22Z3_lCoBwQCrHvJa15YFg22QnYgfRSp0vdVl-Hm_0weruL80L-8I_-LAxX4GEKfJOZ7msUTED3wpu_lh1YWvm9CwFaOWC_-PWB7OFPdKInqgyrX0fPbsKQJqmwanXfziMBetfrva3uDLri7xylRRrYO_7WQCO4n-W9X5UCBS4HpGelobKa0CfdWe01K5-HtEXSlzK8tDwpTPdOerqeu2a4Ozu9Z1ryXRu7XT0"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img alt="avatar" data-alt="portrait of a creative influencer in a bright minimalist room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj_n74JVM89BMJUXiXgifR1V6lKzcDL5Fdlm4Eg2cvxcyWi1W7WkRMV6pqpze6y28rkwk5CtI9N8Qi10h0IXWKK5FJo_sIVNntYFkOjfm5iQxutP_hingnbV0TtUN0DNBoRdI9WXhLzvbqjC3uw1J-GhADpQQklmRZZcvG_XJLxM9TqEk0kG5H7w5H0uakvTHXN5AVQWsWgu2WgGZg6cT5IrJQCOe6DgmgtFHen_lw7RjEJQ0qm-IoNrf4O5scZ1Z5Bb7662PCgMs"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-emerald-100 flex items-center justify-center text-[10px] font-bold text-emerald-900">+3</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-col xl:flex-row gap-10 items-start">
+<!-- Main Creator Shortlist Table Section -->
+<section class="flex-1 w-full bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/15">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-emerald-950 tracking-tight">Creator Shortlist</h3>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-emerald-900/20 w-48 md:w-64" placeholder="Filter creators..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-secondary hover:text-emerald-950 transition-colors" data-icon="filter_list">filter_list</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-y-6">
+<thead>
+<tr class="text-xs text-secondary font-bold uppercase tracking-widest border-b border-outline-variant/10">
+<th class="pb-4 font-bold">Platform</th>
+<th class="pb-4 font-bold">Creator Name</th>
+<th class="pb-4 font-bold text-right">Followers</th>
+<th class="pb-4 font-bold text-center">Fit Score</th>
+<th class="pb-4 font-bold text-right">Status</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1 -->
+<tr class="group hover:bg-slate-50/50 transition-colors">
+<td class="py-2">
+<div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-900">
+<span class="material-symbols-outlined text-lg" data-icon="camera">camera</span>
+</div>
+</td>
+<td>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 overflow-hidden">
+<img alt="creator" data-alt="professional photography of a woman yogi in a serene outdoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBceMjBomeVB7YVeIyJYW4AZZUvPj-6D7xh_5jBy8XbYefte03ICUHBjHT8wIBNpvpLPRbiUD1Kx78UXVuA2Rqf3rtE9Upr9BToQZcVbNpFUUg6t7GUfsTbpZWxjPOz_2EeV4PuG4ZDAQ1cWVOv6uSVPQ-GgQa9eDPoTHKEcWe7h13G4VY6EH-Q0P3JIhLv00TV7ZZowy4DIZ2QaSdddwfWii250-N8j6NMvJmzpzqTQ538QrNB0cb7_gEzDpPxbWFgyqOafBY2nCk"/>
+</div>
+<div>
+<p class="font-bold text-emerald-950 text-sm">Elena Rosales</p>
+<p class="text-xs text-secondary">@elenaflows</p>
+</div>
+</div>
+</td>
+<td class="text-right font-manrope font-semibold text-emerald-950">248.5k</td>
+<td class="text-center">
+<div class="inline-flex items-center justify-center w-10 h-10 rounded-full border-2 border-emerald-100 text-xs font-bold text-emerald-700 bg-emerald-50">98</div>
+</td>
+<td class="text-right">
+<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-wider">Contacted</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-slate-50/50 transition-colors">
+<td class="py-2">
+<div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-900">
+<span class="material-symbols-outlined text-lg" data-icon="video_library">video_library</span>
+</div>
+</td>
+<td>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 overflow-hidden">
+<img alt="creator" data-alt="portrait of a healthy lifestyle male influencer in a bright minimalist kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRaLa5ROEH75zD_HC4yKm6wnWpyeKbS5rYcfj0azfpgJN94MFiay2z2DqvQbA2IKEH0s2EExqzvKQa1Z8vcQygKC2zTHM-NMJbo3Mxk4sD0JFz1NX_MAifB6h65Op-xOtYr-c5CiEWEDxI2HpXkiGKgiCeu3-2q10woNMb5M1_W54d_aHBbDpMWNiaELrU-1lHZSIcJ1JAd9wDYfGvN6AZUJ3QltHNj6OS6-JmxPLdV1Pg4N80WEolZgZsi8cH6TCO8__CKrd4gaI"/>
+</div>
+<div>
+<p class="font-bold text-emerald-950 text-sm">Marcus Chen</p>
+<p class="text-xs text-secondary">@marcus_zen</p>
+</div>
+</div>
+</td>
+<td class="text-right font-manrope font-semibold text-emerald-950">1.2M</td>
+<td class="text-center">
+<div class="inline-flex items-center justify-center w-10 h-10 rounded-full border-2 border-emerald-100 text-xs font-bold text-emerald-700 bg-emerald-50">94</div>
+</td>
+<td class="text-right">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">Drafting</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-slate-50/50 transition-colors">
+<td class="py-2">
+<div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-900">
+<span class="material-symbols-outlined text-lg" data-icon="camera">camera</span>
+</div>
+</td>
+<td>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 overflow-hidden">
+<img alt="creator" data-alt="lifestyle headshot of an aesthetic influencer with warm sunlit backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPZYYNFXK8MytKqo4lpZX87gpmshtpxMxxoWpMM9cZWCH20v1IdofjbVVNwbwAjnwjk4Tsi337O94HjYgf_5NZfh_rf43ryUPakYhFMl2BqnIVvj1guGobl4-Q-1JlNMACJAnkVIJBd0Ojy96MnPTh7CF1jkBlOp8pseV5ZSO5DIKRSmmvWuCidwRzr3NhLI4H_ZcpuQomAuQghjNHSBWIqXnoLI7Gw0kpWzO9AstFjsB5AIosZU98G3B5e7Tpngvvg2K0bO5fy9g"/>
+</div>
+<div>
+<p class="font-bold text-emerald-950 text-sm">Sarah Jenkins</p>
+<p class="text-xs text-secondary">@sarah.living</p>
+</div>
+</div>
+</td>
+<td class="text-right font-manrope font-semibold text-emerald-950">42k</td>
+<td class="text-center">
+<div class="inline-flex items-center justify-center w-10 h-10 rounded-full border-2 border-emerald-100 text-xs font-bold text-emerald-700 bg-emerald-50">88</div>
+</td>
+<td class="text-right">
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-wider">Paused</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Side Panel: Outreach Draft Preview -->
+<aside class="w-full xl:w-96 bg-surface-container-low rounded-xl p-8 border border-outline-variant/15 flex flex-col gap-6 sticky top-8">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-emerald-950 tracking-tight">Outreach Draft</h3>
+<span class="material-symbols-outlined text-emerald-900 cursor-pointer" data-icon="edit_note">edit_note</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant/10 shadow-sm">
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-1">Subject Line</p>
+<p class="text-sm font-semibold text-emerald-950">Collaboration Invitation: Yogi x @{{creator_name}}</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/10 shadow-sm relative overflow-hidden group">
+<div class="absolute inset-0 bg-emerald-950/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Hi {{first_name}},<br/><br/>
+                                We've been following your journey at <strong>Yogi</strong> and absolutely love the intentionality behind your content. Your recent post about morning rituals deeply resonated with our brand ethos.<br/><br/>
+                                We're launching our new <em>Evergreen Collection</em> and would love to discuss a partnership that empowers your community...
+                            </p>
+</div>
+</div>
+<div class="space-y-3 pt-4 border-t border-outline-variant/20">
+<div class="flex items-center justify-between text-xs font-medium text-secondary">
+<span>Estimated Response Rate</span>
+<span class="text-emerald-700 font-bold">18% High</span>
+</div>
+<div class="flex items-center justify-between text-xs font-medium text-secondary">
+<span>Campaign Alignment</span>
+<span class="text-emerald-700 font-bold">Excellent</span>
+</div>
+<button class="w-full mt-4 py-3 bg-emerald-950 text-white rounded-xl font-bold tracking-tight hover:shadow-xl hover:shadow-emerald-900/20 transition-all flex items-center justify-center gap-2">
+<span>Finalize &amp; Send</span>
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Decorative Canvas Elements -->
+<div class="fixed top-0 right-0 -z-10 w-1/2 h-screen opacity-30 pointer-events-none overflow-hidden">
+<div class="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-emerald-100 to-transparent blur-[120px]"></div>
+</div>
+</body></html>

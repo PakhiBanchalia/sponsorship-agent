@@ -1,0 +1,176 @@
+<div class="overflow-hidden rounded-2xl border border-outline-variant/15 bg-white">
+  <div class="overflow-x-auto">
+    <table class="min-w-[1080px] w-full table-fixed border-collapse">
+      <thead class="bg-surface-container-low">
+        <tr class="text-center text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">
+          <th class="px-4 py-4">Platform</th>
+          <th class="px-4 py-4">Creator</th>
+          <th class="px-4 py-4">Followers</th>
+          <th class="px-4 py-4">Median views</th>
+          <th class="px-4 py-4">Brand Safety</th>
+          <th class="px-4 py-4">Fit Score</th>
+          <th class="px-4 py-4">Est. cost</th>
+          <th class="px-4 py-4">Contact</th>
+          <th class="px-4 py-4">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for creator in creators %}
+        {% set is_running = creator.latest_run_status in ['PENDING', 'RUNNING'] %}
+        <tr class="border-t border-outline-variant/10 text-center align-top {% if creator.brand_safety_status == 'flagged' %}bg-red-50/40{% else %}bg-white{% endif %}">
+          <td class="px-4 py-5">
+            <div class="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-600">
+              {% if creator.platform == 'youtube' %}
+              <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none">
+                <path d="M21.8 7.2a2.9 2.9 0 0 0-2-2C18 4.7 12 4.7 12 4.7s-6 0-7.8.5a2.9 2.9 0 0 0-2 2A30.3 30.3 0 0 0 1.7 12c0 1.6.2 3.2.5 4.8a2.9 2.9 0 0 0 2 2c1.8.5 7.8.5 7.8.5s6 0 7.8-.5a2.9 2.9 0 0 0 2-2c.3-1.6.5-3.2.5-4.8s-.2-3.2-.5-4.8Z" fill="currentColor"/>
+                <path d="M10 15.4V8.6l5.6 3.4L10 15.4Z" fill="white"/>
+              </svg>
+              {% else %}
+              <span class="material-symbols-outlined text-lg">person</span>
+              {% endif %}
+            </div>
+          </td>
+          <td class="px-4 py-5">
+            <div class="mx-auto max-w-[170px]">
+              <p class="truncate text-sm font-bold text-emerald-950">{{ creator.name }}</p>
+              <p class="mt-1 truncate text-xs text-secondary">{{ creator.handle or creator.profile_url }}</p>
+            </div>
+          </td>
+          <td class="px-4 py-5 text-sm font-semibold text-emerald-950">
+            {% if creator.followers %}
+              {% if creator.followers >= 1000000 %}
+                {{ "%.1f"|format(creator.followers / 1000000) }}M
+              {% elif creator.followers >= 1000 %}
+                {{ "%.1f"|format(creator.followers / 1000) }}k
+              {% else %}
+                {{ "{:,}".format(creator.followers) }}
+              {% endif %}
+            {% else %}
+              <span class="text-slate-400">—</span>
+            {% endif %}
+          </td>
+          <td class="px-4 py-5 text-sm font-semibold text-emerald-950">
+            {% if creator.median_views_last_10 %}
+              {% if creator.median_views_last_10 >= 1000000 %}
+                {{ "%.1f"|format(creator.median_views_last_10 / 1000000) }}M
+              {% elif creator.median_views_last_10 >= 1000 %}
+                {{ "%.1f"|format(creator.median_views_last_10 / 1000) }}k
+              {% else %}
+                {{ "{:,}".format(creator.median_views_last_10) }}
+              {% endif %}
+            {% else %}
+              <span class="text-slate-400">—</span>
+            {% endif %}
+          </td>
+          <td class="px-4 py-5">
+            <div class="flex min-h-[3rem] flex-col items-center justify-center gap-2">
+              {% if creator.brand_safety_status == 'clear' %}
+              <span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-800">Clear</span>
+              {% elif creator.brand_safety_status == 'flagged' %}
+              <div class="flex flex-wrap items-center justify-center gap-2">
+                <span class="inline-flex items-center rounded-full bg-error-container px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-on-error-container">Flagged</span>
+                {% if creator.red_flags_json %}
+                <button type="button" class="text-[11px] font-semibold text-error hover:underline underline-offset-2"
+                  onclick='openBrandSafetyCard({{ creator.name|tojson }}, {{ creator.red_flags_json|tojson }})'>
+                  View details
+                </button>
+                {% endif %}
+              </div>
+              {% else %}
+              <span class="inline-flex items-center rounded-full bg-surface-container-highest px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-secondary">Unverified</span>
+              {% endif %}
+            </div>
+          </td>
+          <td class="px-4 py-5">
+            {% if creator.fit_score is not none %}
+            <div class="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-emerald-100 bg-emerald-50 text-xs font-bold text-emerald-700">
+              {{ "%.0f"|format(creator.fit_score) }}
+            </div>
+            {% else %}
+            <span class="text-slate-400">—</span>
+            {% endif %}
+          </td>
+          <td class="px-4 py-5 text-sm font-semibold text-emerald-950">
+            {% if creator.estimated_cost_low is not none and creator.estimated_cost_high is not none %}
+            ${{ "%.0f"|format(creator.estimated_cost_low) }}–${{ "%.0f"|format(creator.estimated_cost_high) }}
+            {% else %}
+            <span class="text-slate-400">—</span>
+            {% endif %}
+          </td>
+          <td class="px-4 py-5">
+            {% if creator.contact_method %}
+            <span class="inline-flex rounded-full bg-surface-container-highest px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-secondary">{{ creator.contact_method }}</span>
+            {% else %}
+            <span class="text-slate-400">—</span>
+            {% endif %}
+          </td>
+          <td class="px-4 py-5">
+            <span class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider
+              {% if creator.status in ['shortlisted', 'contact_found', 'draft_ready'] %}
+                bg-emerald-100 text-emerald-800
+              {% elif creator.status in ['form_submitted', 'email_sent'] %}
+                bg-emerald-100 text-emerald-800
+              {% elif creator.status in ['failed', 'manual_review', 'enrichment_failed', 'safety_failed', 'outreach_failed'] %}
+                bg-error-container text-on-error-container
+              {% else %}
+                bg-secondary-container text-on-secondary-container
+              {% endif %}">
+              {% if is_running %}
+              <span class="h-2 w-2 rounded-full bg-current"></span>
+              {% endif %}
+              <span>
+                {% if creator.status in ['form_submitted', 'email_sent'] %}
+                contacted
+                {% else %}
+                {{ creator.status|replace('_', ' ') }}
+                {% endif %}
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr class="{% if creator.brand_safety_status == 'flagged' %}bg-red-50/30{% else %}bg-surface-container-lowest{% endif %}">
+          <td colspan="9" class="border-t border-outline-variant/10 px-4 py-4">
+            <div class="flex flex-wrap items-center gap-2">
+              {% if creator.evidence_url %}
+              <a href="{{ creator.evidence_url }}" target="_blank"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-outline-variant/30 bg-white px-3 py-2 text-[11px] font-medium text-secondary transition-all hover:border-emerald-200 hover:text-emerald-900">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                Evidence
+              </a>
+              {% endif %}
+              {% if creator.latest_streaming_url and creator.latest_run_status == 'RUNNING' %}
+              <a href="{{ creator.latest_streaming_url }}" target="_blank"
+                class="inline-flex items-center gap-1.5 rounded-lg border border-outline-variant/30 bg-white px-3 py-2 text-[11px] font-medium text-secondary transition-all hover:border-emerald-200 hover:text-emerald-900">
+                <span class="material-symbols-outlined text-sm">live_tv</span>
+                Watch Live
+              </a>
+              {% endif %}
+              <button
+                class="inline-flex items-center gap-1.5 rounded-lg border border-outline-variant/30 bg-white px-3 py-2 text-[11px] font-medium text-secondary transition-all hover:border-emerald-200 hover:text-emerald-900"
+                onclick="previewDraft({{ creator.id }})">
+                <span class="material-symbols-outlined text-sm">draft</span>
+                Preview Draft
+              </button>
+              <button
+                class="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-[11px] font-bold text-on-primary transition-all hover:shadow-lg hover:shadow-emerald-900/10"
+                onclick='runOutreach({{ creator.id }}, {{ "true" if creator.brand_safety_status == "flagged" else "false" }}, {{ creator.red_flags_json|tojson }})'>
+                <span class="material-symbols-outlined text-sm">send</span>
+                Run Outreach
+              </button>
+            </div>
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="9" class="px-6 py-16 text-center">
+            <div class="flex flex-col items-center gap-3">
+              <span class="material-symbols-outlined text-4xl text-outline-variant">group_add</span>
+              <p class="text-sm font-medium text-secondary">Creators will appear here as discovery and enrichment complete.</p>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

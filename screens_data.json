@@ -1,0 +1,74 @@
+{
+  "7a40f0da2af14f7d9bb1018cbef7dd43": {
+    "content": [
+      {
+        "text": "{\"name\":\"projects/6790137956938804826/screens/7a40f0da2af14f7d9bb1018cbef7dd43\",\"title\":\"Campaign Overview (Unified)\",\"screenshot\":{\"name\":\"projects/6790137956938804826/files/33fdcf8677fd4dcbbcd6a7cdaf570509\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/ADBb0ugKfa3Hx279_Kr_KjTlJQS8J3wQU0au5cZMi23y1ml5vs_Idiz7Stxj0g1okz7jYKSzm4qG87QvgimCf_V0MgLzxuyyX0u2R-klYl9-82C2p-Ro3xEITv_E61QHRYTFIQmSFYdE7jxFEAQn8_GxM9bY7f0ORG3xFDqYdxunUtkl4Zl_nwB55DS17Ep65es1ps8SkqNhTu8ruaGS_LB8Dc4TuyHIJ0XL9FmB3whOnbZzaxOgpVQANg5M0A\"},\"htmlCode\":{\"name\":\"projects/6790137956938804826/files/bfd6a80761f54c0dab89b6706ffbf55c\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2NmMGFlZTIxODlmYjQwMTBiNWQwNWQ5ZTlkZTNlMjcyEgsSBxDao4-8whcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzkwMTM3OTU2OTM4ODA0ODI2&filename=&opi=89354086\",\"mimeType\":\"text/html\"},\"width\":\"3072\",\"height\":\"2524\",\"deviceType\":\"DESKTOP\"}",
+        "type": "text"
+      }
+    ],
+    "structuredContent": {
+      "deviceType": "DESKTOP",
+      "height": "2524",
+      "htmlCode": {
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2NmMGFlZTIxODlmYjQwMTBiNWQwNWQ5ZTlkZTNlMjcyEgsSBxDao4-8whcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzkwMTM3OTU2OTM4ODA0ODI2&filename=&opi=89354086",
+        "mimeType": "text/html",
+        "name": "projects/6790137956938804826/files/bfd6a80761f54c0dab89b6706ffbf55c"
+      },
+      "name": "projects/6790137956938804826/screens/7a40f0da2af14f7d9bb1018cbef7dd43",
+      "screenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/ADBb0ugKfa3Hx279_Kr_KjTlJQS8J3wQU0au5cZMi23y1ml5vs_Idiz7Stxj0g1okz7jYKSzm4qG87QvgimCf_V0MgLzxuyyX0u2R-klYl9-82C2p-Ro3xEITv_E61QHRYTFIQmSFYdE7jxFEAQn8_GxM9bY7f0ORG3xFDqYdxunUtkl4Zl_nwB55DS17Ep65es1ps8SkqNhTu8ruaGS_LB8Dc4TuyHIJ0XL9FmB3whOnbZzaxOgpVQANg5M0A",
+        "name": "projects/6790137956938804826/files/33fdcf8677fd4dcbbcd6a7cdaf570509"
+      },
+      "title": "Campaign Overview (Unified)",
+      "width": "3072"
+    }
+  },
+  "384d1ce58b5746548539e4701cbe2d85": {
+    "content": [
+      {
+        "text": "{\"name\":\"projects/6790137956938804826/screens/384d1ce58b5746548539e4701cbe2d85\",\"title\":\"Campaign Dashboard (Updated)\",\"screenshot\":{\"name\":\"projects/6790137956938804826/files/f8563b52b3354444a9e3f2c8cdd6e09a\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/ADBb0ujtIPhD-TJIPGEeKMF_rCmz5q1OndLqn9yxLAWKOmDi_Ll0y7cQw_iVyoQr0WvNPzGCOBVSJoS6YKurrPyjL97P3R7m8PRSZeOTy2H9-JQDSm0XWi3bRZfdCzmOVT1h2UBqPXS7HZcpixgMbzT-7W3ip8xnoABlLO3XCRyOUcIER-WktjEJ1wAK3XdXzkdDY-tG8bxdbtamKTYepOJXWHrthRQXUWde6m0kiXZy18wfbZqb04i3_MKb7EU\"},\"htmlCode\":{\"name\":\"projects/6790137956938804826/files/22eb1063a82141d8ae812b9fdc9168ab\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2M5NDIyMWZiMWJlOTQ1Yzg4MjU0OWViNjUzYWU0MmYwEgsSBxDao4-8whcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzkwMTM3OTU2OTM4ODA0ODI2&filename=&opi=89354086\",\"mimeType\":\"text/html\"},\"width\":\"2560\",\"height\":\"2280\",\"deviceType\":\"DESKTOP\"}",
+        "type": "text"
+      }
+    ],
+    "structuredContent": {
+      "deviceType": "DESKTOP",
+      "height": "2280",
+      "htmlCode": {
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2M5NDIyMWZiMWJlOTQ1Yzg4MjU0OWViNjUzYWU0MmYwEgsSBxDao4-8whcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzkwMTM3OTU2OTM4ODA0ODI2&filename=&opi=89354086",
+        "mimeType": "text/html",
+        "name": "projects/6790137956938804826/files/22eb1063a82141d8ae812b9fdc9168ab"
+      },
+      "name": "projects/6790137956938804826/screens/384d1ce58b5746548539e4701cbe2d85",
+      "screenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/ADBb0ujtIPhD-TJIPGEeKMF_rCmz5q1OndLqn9yxLAWKOmDi_Ll0y7cQw_iVyoQr0WvNPzGCOBVSJoS6YKurrPyjL97P3R7m8PRSZeOTy2H9-JQDSm0XWi3bRZfdCzmOVT1h2UBqPXS7HZcpixgMbzT-7W3ip8xnoABlLO3XCRyOUcIER-WktjEJ1wAK3XdXzkdDY-tG8bxdbtamKTYepOJXWHrthRQXUWde6m0kiXZy18wfbZqb04i3_MKb7EU",
+        "name": "projects/6790137956938804826/files/f8563b52b3354444a9e3f2c8cdd6e09a"
+      },
+      "title": "Campaign Dashboard (Updated)",
+      "width": "2560"
+    }
+  },
+  "7e55de3e5c754649a6603320b903c710": {
+    "content": [
+      {
+        "text": "{\"name\":\"projects/6790137956938804826/screens/7e55de3e5c754649a6603320b903c710\",\"title\":\"Create Campaign (Updated)\",\"screenshot\":{\"name\":\"projects/6790137956938804826/files/60ac090dbfb84a87936dd6cf7c7364b2\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/ADBb0uhC2k-tglPpT3Xm7ifIWE9aUsyZc5OJJrI2VCj4CPDOjeRb8hMUdcWdmJkSXUr4AgczWA6l-RIJYARHMNHU9IZjJcaPr34XINVOW7wLikU-noLX6og00eR5IqIb1bB7-FnDlIbpj5JR6_9SRSyD4JFJWcL_rAN3rZzq2W938QTHykM1NKFQK_YugfklVd2UQS5xhOhK5a-snTLEkwdqxvlbJk04jCCubCa85qPUl0aFpAzr9sWcOCjC9tM\"},\"htmlCode\":{\"name\":\"projects/6790137956938804826/files/a5f46daa20bd46d4b0bc70918ca1f1b8\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzNiMjg0MDQyNGQ5NDQxZGRiYTMwMDg0MTA2MTdiNjg3EgsSBxDao4-8whcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzkwMTM3OTU2OTM4ODA0ODI2&filename=&opi=89354086\",\"mimeType\":\"text/html\"},\"width\":\"2560\",\"height\":\"2624\",\"deviceType\":\"DESKTOP\"}",
+        "type": "text"
+      }
+    ],
+    "structuredContent": {
+      "deviceType": "DESKTOP",
+      "height": "2624",
+      "htmlCode": {
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzNiMjg0MDQyNGQ5NDQxZGRiYTMwMDg0MTA2MTdiNjg3EgsSBxDao4-8whcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzkwMTM3OTU2OTM4ODA0ODI2&filename=&opi=89354086",
+        "mimeType": "text/html",
+        "name": "projects/6790137956938804826/files/a5f46daa20bd46d4b0bc70918ca1f1b8"
+      },
+      "name": "projects/6790137956938804826/screens/7e55de3e5c754649a6603320b903c710",
+      "screenshot": {
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/ADBb0uhC2k-tglPpT3Xm7ifIWE9aUsyZc5OJJrI2VCj4CPDOjeRb8hMUdcWdmJkSXUr4AgczWA6l-RIJYARHMNHU9IZjJcaPr34XINVOW7wLikU-noLX6og00eR5IqIb1bB7-FnDlIbpj5JR6_9SRSyD4JFJWcL_rAN3rZzq2W938QTHykM1NKFQK_YugfklVd2UQS5xhOhK5a-snTLEkwdqxvlbJk04jCCubCa85qPUl0aFpAzr9sWcOCjC9tM",
+        "name": "projects/6790137956938804826/files/60ac090dbfb84a87936dd6cf7c7364b2"
+      },
+      "title": "Create Campaign (Updated)",
+      "width": "2560"
+    }
+  }
+}
