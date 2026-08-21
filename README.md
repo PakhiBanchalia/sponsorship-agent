@@ -1,5 +1,7 @@
 # Creator Sponsorship Agent
 
+![Campaign dashboard](Campaign_Dashboard_Updated_.png)
+
 An **autonomous agent that runs an influencer-sponsorship campaign end to end** —
 from "here's my brand and budget" to a shortlist of vetted creators with outreach
 emails sent. Built as a **TinyFish accelerator MVP**: you describe a campaign, and
