@@ -65,7 +65,7 @@ timeline, creator table, and campaign summaries.
 ## Setup
 
 ```bash
-git clone https://github.com/Pakhi07/sponsorship-agent.git
+git clone https://github.com/PakhiBanchalia/sponsorship-agent.git
 cd sponsorship-agent
 
 python3 -m venv .venv && source .venv/bin/activate
