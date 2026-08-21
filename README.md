@@ -1,4 +1,4 @@
-# Creator Sponsorship Agent
+# Alignd: Creator Sponsorship Agent
 
 ![Campaign dashboard](Campaign_Dashboard_Updated_.png)
 
