@@ -2,6 +2,8 @@
 
 ![Campaign dashboard](Campaign_Dashboard_Updated_.png)
 
+https://github.com/user-attachments/assets/cd5f567f-03bc-416b-b169-07e346179c97
+
 An **autonomous agent that runs an influencer-sponsorship campaign end to end** —
 from "here's my brand and budget" to a shortlist of vetted creators with outreach
 emails sent. Built as a **TinyFish accelerator MVP**: you describe a campaign, and
